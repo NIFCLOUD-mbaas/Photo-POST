@@ -1,0 +1,11 @@
+{
+    "name": "cordova-app",
+    "cordova": {
+        "plugins": {
+            "cordova-custom-config": {}
+        }
+    },
+    "dependencies": {
+        "cordova-custom-config": "5.0.2"
+    }
+}

@@ -1,0 +1,281 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <script src="components/loader.js"></script>
+        <link rel="stylesheet" href="components/loader.css">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/app.js"></script>
+    </head>
+    <body>
+        <!-- ログインページ -->
+        <div data-role="page" id="LoginPage">
+            <header data-role="header" data-position="fixed" data-theme="c">
+                <h1>Photo POST</h1>
+            </header>
+            <section data-role="content">
+                <center>
+                  <img src="/images/PhotoPOSTLogo.PNG" width="90%"/>
+                  <h2>ログイン</h2>
+                </center>
+                ユーザー名を入力
+                <input type="text" id="loginUserName" placeholder="ユーザー名">
+                パスワードを入力
+                <input type="password" id="loginPassword" placeholder="パスワード">
+                <a href="#" id="loginBtn" data-role="button" data-inline="false" data-theme="b">ログインする</a><br>
+                <center><a href = "#RegistPage">新規ユーザー登録はこちら</a></center>
+            </section>
+        </div>
+    
+      <!-- 新規登録ページ -->
+        <div data-role="page" id="RegistPage">
+            <header data-role="header" data-position="fixed" data-theme="c">
+                <h1>Photo POST</h1>
+                <a href="#" class="ui-btn-left" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d">戻る</a>
+            </header>
+            <section data-role="content">
+                <center>
+                  <img src="/images/PhotoPOSTLogo.PNG" width="90%"/>
+                  <h2>新規登録</h2>
+                </center>
+                ユーザー名を入力
+                <input type="text" id="registUserName" placeholder="ユーザー名">
+                パスワードを入力
+                <input type="password" id="registPassword" placeholder="パスワード">
+                <a href="#" id="registBtn" data-role="button" data-inline="false" data-theme="b">登録する</a><br>
+            </section>
+        </div>
+    
+        <!-- 【メイン画面】本体ページ＆タブ -->
+        <div data-role="page" id="HomeScreenPage">
+            <header data-role="header" data-position="fixed" data-theme="c">
+                <h1>Photo POST</h1>
+                <a href="#yesNoDialog_logout" class="ui-btn-left" data-rel="popup" data-position-to="window" data-role="button" data-inline="false" data-theme="d">ログアウト</a>
+                <a href="#accesstoEachFile" class="ui-btn-right" data-rel="popup" data-position-to="window" data-role="button" data-theme="d">メニュー</a>
+            </header>
+
+            <!-- 【メイン画面】タブ機能＆中央部 -->
+            <section data-role="content">
+                <!--Detail show-->
+                <p><center><h2>あなたのフォトを<br>投稿しましょう！</h2></center></p><br>
+                <!--Dialog box confirming logout-->
+                <div data-role="popup" id="yesNoDialog_logout" data-overlay-theme="a" data-theme="c" data-dismissible="false" style="max-width:400px;" class="ui-corner-all">
+                    <div data-role="header" data-theme="c" class="ui-corner-top" style="top: 0 !important;">
+                        <h1>確認</h1>
+                    </div>
+                    <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                        <h3 class="ui-title"></h3>
+                        <p>ログアウトしてもよろしいですか？</p>
+                        <a href="#" id="YesBtn_logout" data-role="button" data-inline="true" data-transition="flow" data-theme="b">はい</a>
+                        <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">いいえ</a>
+                    </div>
+                </div>
+                <!-- メニューボタン -->
+                <div data-role="popup" id="accesstoEachFile" data-overlay-theme="a" data-theme="c" data-dismissible="false"  style="max-width:400px;" class="ui-corner-all">
+                    <div align="middle" data-role="content" data-theme="d" class="ui-corner-bottom ui-content">
+                        <h3 class="ui-title"></h3>
+                        <a href="#" id="everyoneBtn" data-role="button" data-inline="true"  data-transition="flow" data-theme="b">みんなの投稿</a><br>
+                        <a href="#" id="myFilesBtn" data-role="button" data-inline="true" data-transition="flow" data-theme="b">マイフォト</a><br>
+                        <a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="d">戻る</a>
+                    </div>
+                </div>
+                        <label>作品名を入力</label>
+                        <input id="imgName" type="text" placeholder="作品名">
+                        <label>ファイルを選択</label>
+                        <div>
+                            <form>
+                                <input id="photo" type="file" accept="image/*">
+                            </form>
+                                <center><div id="preview"></div></center>
+                        </div>
+                    <input id="uploadBtn" type="button" value="アップロード" data-theme="b"">
+            </section>
+        </div>
+
+        <!-- 【みんなの投稿】本体ページ＆タブバー -->
+        <div data-role="page" id="EveryonePage">
+            <header data-role="header" data-position="fixed" data-theme="c">
+                <h1>みんなの投稿</h1>
+                <a href="#HomeScreenPage" class="ui-btn-left" data-role="button" data-mini="true" data-inline="true" data-theme="d">戻る</a>
+                <a href="#" class="ui-btn-right" data-role="button" data-theme="d" onclick="getAllFileData();">更新</a>
+            </header>
+            <!-- 【みんなの投稿】タブ機能＆中央部 -->
+            <section data-role="content">
+                <center>
+                    <!-- 画像表示 -->
+                    <table border="1" width="98%">
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_0" width="75%"/><br>
+                                    <span id="title_0"></span><br>
+                                    <span id="poster_0"></span>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_1" width="75%"/><br>
+                                    <span id="title_1"></span><br>
+                                    <span id="poster_1"></span>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_2" width="75%"/><br>
+                                    <span id="title_2"></span><br>
+                                    <span id="poster_2"></span>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_3" width="75%"/><br>
+                                    <span id="title_3"></span><br>
+                                    <span id="poster_3"></span>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_4" width="75%"/><br>
+                                    <span id="title_4"></span><br>
+                                    <span id="poster_4"></span>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_5" width="75%"/><br>
+                                    <span id="title_5"></span><br>
+                                    <span id="poster_5"></span>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_6" width="75%"/><br>
+                                    <span id="title_6"></span><br>
+                                    <span id="poster_6"></span>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_7" width="75%"/><br>
+                                    <span id="title_7"></span><br>
+                                    <span id="poster_7"></span>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_8" width="75%"/><br>
+                                    <span id="title_8"></span><br>
+                                    <span id="poster_8"></span>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="image_9" width="75%"/><br>
+                                    <span id="title_9"></span><br>
+                                    <span id="poster_9"></span>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </section>
+        </div>
+            
+        <!-- 【マイフォト】本体ページ＆タブバー -->
+        <div data-role="page" id="MyPage">
+            <header data-role="header" data-position="fixed" data-theme="c">
+                <h1>マイフォト</h1>
+                <a href="#HomeScreenPage" class="ui-btn-left" data-role="button" data-mini="true" data-inline="true" data-theme="d">戻る</a>
+                <a href="" class="ui-btn-right" data-role="button" data-theme="d" onclick="getMyFileData();">更新</a>
+            </header>
+
+            <!-- 【マイフォト】タブ機能＆中央部 -->
+            <section data-role="content">
+                <center>
+                    <!-- 画像表示 -->
+                    <table border="1" width="98%">
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_0" width="75%"/><br>
+                                    <span id="myTitle_0"></span><br>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_1" width="75%"/><br>
+                                    <span id="myTitle_1"></span><br>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_2" width="75%"/><br>
+                                    <span id="myTitle_2"></span><br>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_3" width="75%"/><br>
+                                    <span id="myTitle_3"></span><br>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_4" width="75%"/><br>
+                                    <span id="myTitle_4"></span><br>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_5" width="75%"/><br>
+                                    <span id="myTitle_5"></span><br>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_6" width="75%"/><br>
+                                    <span id="myTitle_6"></span><br>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_7" width="75%"/><br>
+                                    <span id="myTitle_7"></span><br>
+                                </center>
+                            </td>
+                        </tr>
+                        <tr height="200px">
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_8" width="75%"/><br>
+                                    <span id="myTitle_8"></span><br>
+                                </center>
+                            </td>
+                            <td width="49%">
+                                <center>
+                                    <img src="" id="myImage_9" width="75%"/><br>
+                                    <span id="myTitle_9"></span><br>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+                </center>
+            </section>
+        </div>
+    </body>
+</html>
