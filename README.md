@@ -34,49 +34,49 @@
   - ➡ URL <a href="http://bit.ly/KondoYutaro_PhotoPost" target="_blank">http://bit.ly/KondoYutaro_PhotoPost</a>
 * 「インポート」をクリックして、「Photo POST」プロジェクトをインポートします
 
-<center><img src="ReadmeImages/図44.PNG" alt="図44" width="700px"></center>
+<center><img src="ReadmeImages/図44.png" alt="図44" width="700px"></center>
 
 * Monaca の Dashboard にプロジェクトが追加されるので、プロジェクトを選択し、「クラウドIDEで開く」をクリックします
 
-<center><img src="ReadmeImages/図22.PNG" alt="図22" width="700px"></center>
+<center><img src="ReadmeImages/図22.png" alt="図22" width="700px"></center>
 
 * プロジェクトが開かれます
 
-<center><img src="ReadmeImages/図26.PNG" alt="図26" width="700px"></center>
+<center><img src="ReadmeImages/図26.png" alt="図26" width="700px"></center>
 
 ### 2. mobile backend SDK の導入
 * 「設定」＞「JS/CSSコンポーネントの追加と削除...」をクリックします
 * 「ncmb」と入力して「検索する」をクリックします
 
-<center><img src="ReadmeImages/SDK導入1.PNG" alt="図" width="700px"></center>
+<center><img src="ReadmeImages/SDK導入1.png" alt="図" width="700px"></center>
 
 * 「ncmb」が表示されたら「追加」をクリックします
 * SDKのバージョンはそのまま（最新）で、「インストール」をクリックします
 * 「components/ncmb/ncmb.min.js」にチェックを入れて「保存」をクリックします
 
-<center><img src="ReadmeImages/SDK導入2.PNG" alt="図" width="700px"></center>
+<center><img src="ReadmeImages/SDK導入2.png" alt="図" width="700px"></center>
 
 * 一覧に表示されれば導入完了です
 
-<center><img src="ReadmeImages/SDK導入3.PNG" alt="図" width="700px"></center>
+<center><img src="ReadmeImages/SDK導入3.png" alt="図" width="700px"></center>
 
 ### 3. ニフクラ mobile backend でアプリの作成とAPIキーの発行
 * ブラウザの別のタブで ニフクラ mobile backend にログインします
 * 「アプリの新規作成」画面が表示されますので、「`PhotoPOSTdemo`」と入力してアプリを新規作成します
   - 既に ニフクラ mobile backend を利用したことがある方は、下図のように緑のボタン「＋新しいアプリ」をクリックすると「アプリの新規作成」画面が表示されます
 
-<center><img src="ReadmeImages/図24.PNG" alt="図24" width="700px"></center>
+<center><img src="ReadmeImages/図24.png" alt="図24" width="700px"></center>
 
 * アプリ作成が完了するとAPIキーが発行されます
 * この２種類のAPIキー（アプリケーションキーとクライアントキー）は Monaca で作成するアプリに ニフクラ mobile backend を紐付けるために使用されます
 
-<center><img src="ReadmeImages/図6.PNG" alt="図6" width="700px"></center>
+<center><img src="ReadmeImages/図6.png" alt="図6" width="700px"></center>
 
 ### 4. ニフクラ mobile backend のAPIキーの設定
 * 再び Monaca で開いたプロジェクトのタブに戻ります
 * ディレクトリで、「www」フォルダ ＞「js」フォルダ（①） 開いて「app.js」ファイル(②）をダブルクリックして開きます（③）
 
-<center><img src="ReadmeImages/図25.PNG" alt="図25" width="700px"></center>
+<center><img src="ReadmeImages/図25.png" alt="図25" width="700px"></center>
 
 * 「`YOUR_NCMB_APPLICATION_KEY`」と「`YOUR_NCMB_CLIENT_KEY`」の部分を、先程 ニフクラ mobile backend の管理画面上で確認したAPIキーに書き換えます
   - このとき、ダブルクォーテーション（`"`）を消さないように注意してください
@@ -88,7 +88,7 @@
 これで準備はすべて完了です。
 
 ## サンプルアプリの使い方
-<center><img src="ReadmeImages/図45.PNG" alt="図20" width="700px"></center>
+<center><img src="ReadmeImages/図45.png" alt="図20" width="700px"></center>
 
 * 新規ユーザー登録を行います
 * ログイン画面（①）の一番下「新規ユーザー登録はこちら」をクリックします
@@ -98,7 +98,7 @@
   - 一度ユーザー登録を行ったら、次回からはログイン画面よりログインできます（①）
 - ニフクラ mobile backend の管理画面を確認するとユーザー情報が登録されていることを確認できます
 
-<center><img src="ReadmeImages/図35.PNG" alt="123" width="700px"></center>
+<center><img src="ReadmeImages/図35.png" alt="123" width="700px"></center>
 
 * 写真を投稿します（③）
 * 写真のタイトル名を記入し、写真を画像フォルダから選択します（④）
@@ -106,11 +106,11 @@
 - ニフクラ mobile backend の管理画面を確認すると画像が登録されていることを確認できます
   - 「ダウンロード」をクリックして確認できます
 
-<center><img src="ReadmeImages/図32.PNG" alt="123" width="700px"></center>
+<center><img src="ReadmeImages/図32.png" alt="123" width="700px"></center>
 
 * 投稿された写真は「みんなの投稿」画面（⑥）と「マイフォト」画面（⑦）に表示（ニフクラ mobile backend からデータを取得）されます
 
-<center><img src="ReadmeImages/図41.PNG" alt="図41" width="700px"></center>
+<center><img src="ReadmeImages/図41.png" alt="図41" width="700px"></center>
 
 - 「みんなの投稿」：アプリユーザーが投稿した最新の写真（10件）を閲覧できる画面
 - 「マイフォト」：投稿者自身の写真だけを閲覧できる画面
